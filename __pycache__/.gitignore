@@ -1,0 +1,16 @@
+# Secrets - never commit these
+.streamlit/secrets.toml
+.streamlit/test_secrets.py
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Local data
+data/local_db.json
+
+# Misc
+check_setup.py
+my_app/
