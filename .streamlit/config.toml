@@ -1,0 +1,21 @@
+# StudyMate AI — Streamlit theme
+#
+# base = "light" is deliberate: without it, Streamlit follows the visitor's
+# OS dark-mode setting and inverts every background, which wrecks the design.
+#
+# primaryColor drives the accent on native widgets (checkboxes, radios,
+# sliders, toggles) so the Upcoming Tasks ticks and Quiz options come out
+# green instead of Streamlit's default red.
+
+[theme]
+base = "light"
+primaryColor = "#22c55e"
+backgroundColor = "#f7f8f9"
+secondaryBackgroundColor = "#ffffff"
+textColor = "#111827"
+
+[client]
+toolbarMode = "minimal"
+
+[browser]
+gatherUsageStats = false

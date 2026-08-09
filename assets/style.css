@@ -1,0 +1,183 @@
+/* ══════════════════════════════════════════════════════════════════
+   StudyMate AI — Login / Signup page styles
+   Loaded only on the auth page (pages_app/auth.py), separate from the
+   app-wide theme in utils/theme.py.
+
+   NOTE on how this connects to real Streamlit widgets:
+   `.st-key-login_card` below targets a genuine `st.container(key="login_card")`
+   in Python - that's a real nested DOM element, so wrapping the email/
+   password inputs and buttons inside that container with this CSS
+   actually draws a card box around them. A plain <div> written directly
+   in login.html could NOT do this (Streamlit renders each st.markdown()
+   call and each widget as separate sibling elements, so an <div> opened
+   in one HTML snippet does not visually wrap widgets created by
+   st.text_input()/st.button() in later calls). That's why the card
+   wrapper is a real st.container(key=...), while the purely decorative,
+   self-contained pieces (logo header, right-hand promo panel) live in
+   login_header.html and right_panel.html.
+   ══════════════════════════════════════════════════════════════════ */
+
+.st-key-login_card {
+    background: white;
+    border: 1px solid rgba(74, 222, 128, 0.25);
+    border-radius: 24px;
+    padding: 34px 38px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.sm-lang-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(0,0,0,0.12);
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-size: 13px;
+    color: #16a34a;
+    font-weight: 500;
+    float: right;
+}
+
+.sm-auth-logo-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+.sm-auth-logo-badge {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    background: #4ade80;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+.sm-auth-logo-text {
+    font-weight: 800;
+    color: #111827;
+    font-size: 1.15rem;
+}
+
+.sm-auth-title {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 2px;
+}
+.sm-auth-subtitle {
+    color: #9ca3af;
+    font-size: 14.5px;
+    margin-bottom: 22px;
+}
+.sm-field-label {
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #6b7280;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+.sm-field-required {
+    color: #dc2626;
+}
+.sm-link-row {
+    text-align: right;
+    margin: 4px 0 18px 0;
+}
+.sm-divider-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 26px 0 18px 0;
+    color: #6b7280;
+    font-size: 13.5px;
+}
+.sm-divider-line {
+    flex: 1;
+    height: 1px;
+    background: rgba(0,0,0,0.12);
+}
+.sm-footer-row {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+/* Login / Sign In button -> dark rounded-rectangle */
+.st-key-login_btn_wrap div.stButton > button {
+    background: #111827;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 12px 0;
+}
+.st-key-login_btn_wrap div.stButton > button:hover {
+    background: #1f2937;
+}
+
+/* Google button -> white rounded-rectangle, same radius as inputs */
+.st-key-google_btn_wrap div.stButton > button {
+    background: white;
+    color: #111827;
+    border: 1px solid #e2e2e2;
+    border-radius: 12px;
+    font-weight: 600;
+    padding: 11px 0;
+}
+.st-key-google_btn_wrap div.stButton > button:hover {
+    background: #f9fafb;
+    border-color: #cbd5e1;
+}
+
+/* Text inputs (email / password) on the auth page -> matching rounded
+   rectangle border, same radius/color as the buttons above */
+.st-key-login_card div[data-baseweb="input"],
+.st-key-login_card div[data-baseweb="textarea"] {
+    border-radius: 12px !important;
+}
+.st-key-login_card div[data-baseweb="input"] > div,
+.st-key-login_card div[data-baseweb="base-input"] {
+    border-radius: 12px !important;
+    border: 1px solid #e2e2e2 !important;
+}
+.st-key-login_card div[data-baseweb="input"]:focus-within > div,
+.st-key-login_card div[data-baseweb="base-input"]:focus-within {
+    border-color: #4ade80 !important;
+    box-shadow: 0 0 0 1px #4ade80 !important;
+}
+
+/* Ghost / text-link buttons on the auth page (forgot password, sign up
+   / sign in mode-switch links) */
+.st-key-auth_switch_wrap div.stButton > button,
+.st-key-auth_switch_wrap2 div.stButton > button {
+    background: none;
+    border: none;
+    color: #16a34a;
+    font-weight: 600;
+    padding: 0;
+}
+
+/* Right-hand decorative promo panel */
+.sm-auth-promo {
+    background: linear-gradient(135deg,#f0fdf4,#eff6ff);
+    border-radius: 24px;
+    padding: 40px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.sm-auth-promo-icon {
+    font-size: 64px;
+}
+.sm-auth-promo p {
+    color: #6b7280;
+    font-size: 14px;
+}
